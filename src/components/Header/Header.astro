@@ -1,10 +1,8 @@
 ---
-import IconLink from '@components/Link/IconLink.astro'
 import SkipToContent from '@components/SkipToContent.astro'
 import { siteMetaData } from '@config'
-// import DarkModeToggle from './DarkModeToggle.astro'
+import Nav from './Nav'
 import ThemeToggle from './ThemeToggle'
-import Nav from './Nav.astro'
 ---
 
 <header class="my-4">
@@ -23,26 +21,6 @@ import Nav from './Nav.astro'
     class="flex content-center items-center justify-self-end py-2 text-text-bold"
   >
     <Nav />
-    <!-- <a
-      class="unset ml-4 rounded-sm bg-gradient-to-r from-primary-yellow to-primary-yellow bg-[length:0%_55%] bg-left-bottom bg-no-repeat transition-[background-size] duration-150 ease-in-out hover:bg-[length:100%_55%] dark:bg-none dark:hover:text-primary-yellow"
-      href="https://github.com/PinecoenBean"
-    >
-      <i
-        class="fa-brands fa-github"
-        aria-hidden="true"
-        title="Blogster on GitHub"></i>
-      <span>GitHub</span>
-    </a> -->
-    <IconLink
-      fromColor="blue"
-      toColor="blue"
-      iconClass="fa-brands fa-github"
-      iconTitle="PineconeBean's Github Link"
-      class="ml-4 text-skin-accent"
-      href="https://github.com/PinecoenBean"
-    >
-      Github
-    </IconLink>
   </div>
   <ThemeToggle client:load />
   <div class="col-span-3 my-4 px-0">

@@ -14,5 +14,11 @@ export const SITE_URL = BASE_URL.origin;
 export const siteMetaData = {
   website: 'https://astro-paper.pages.dev/',
   author: 'Junda Liao',
-  title: 'pinecone.bean',
+  title: 'PineconeBean',
 }
+
+export const navLinks = [
+  { name: 'Home', href: '/' },
+  { name: 'Blog', href: '/blog' }
+  // { name: 'Projects', href: '/projects' }
+]

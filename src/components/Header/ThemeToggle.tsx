@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Switch } from '@headlessui/react'
+import { useHydrated } from '@components/hooks/useHydrated'
+
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState(() => {
@@ -8,6 +10,7 @@ export default function ThemeToggle() {
       ? 'dark'
       : 'light'
   })
+  const hydrated = useHydrated()
   const enabled = theme == 'light' ? false : true
 
   useEffect(() => {
@@ -38,11 +41,22 @@ export default function ThemeToggle() {
       sessionStorage.setItem('theme', 'light')
     }
   }
-
-  return (
+  return hydrated ? (
     <Switch
       checked={enabled}
       onChange={handleThemeChange}
+      className="ml-4 inline-flex h-6 w-11 items-center justify-self-end rounded-full bg-black dark:bg-white"
+    >
+      <span className="sr-only">Toggle dark mode</span>
+      <span
+        className={`inline-block h-4 w-4 translate-x-1 rounded-full bg-primary-yellow bg-gradient-to-tr duration-300 dark:translate-x-6 dark:bg-primary-blue`}
+      >
+        <span className="absolute top-0 right-0 h-[10px] w-[10px] scale-[0] rounded-full bg-gray-700"></span>
+      </span>
+    </Switch>
+  ) : (
+    <Switch
+      checked={true}
       className="ml-4 inline-flex h-6 w-11 items-center justify-self-end rounded-full bg-black dark:bg-white"
     >
       <span className="sr-only">Toggle dark mode</span>

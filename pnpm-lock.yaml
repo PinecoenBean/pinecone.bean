@@ -14,6 +14,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.53.0
   '@typescript-eslint/parser': ^5.53.0
   astro: ^2.0.14
+  classnames: ^2.3.2
   eslint: ^8.34.0
   eslint-config-prettier: ^8.6.0
   eslint-plugin-astro: ^0.23.0
@@ -44,6 +45,7 @@ devDependencies:
   '@types/react-dom': 18.0.11
   '@typescript-eslint/eslint-plugin': 5.53.0_dbs2zxbe2aiqaiiio3svelvkai
   '@typescript-eslint/parser': 5.53.0_eslint@8.34.0
+  classnames: 2.3.2
   eslint: 8.34.0
   eslint-config-prettier: 8.6.0_eslint@8.34.0
   eslint-plugin-astro: 0.23.0_eslint@8.34.0
@@ -1459,6 +1461,10 @@ packages:
   /ci-info/3.8.0:
     resolution: {integrity: sha512-eXTggHWSooYhq49F2opQhuHWgzucfF2YgODK4e1566GQs5BIfP30B0oenwBJHfWxAs2fyPB1s7Mg949zLf61Yw==}
     engines: {node: '>=8'}
+
+  /classnames/2.3.2:
+    resolution: {integrity: sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==}
+    dev: true
 
   /cli-boxes/3.0.0:
     resolution: {integrity: sha512-/lzGpEWL/8PfI0BmBOPRwp0c/wFNX1RdUML3jK/RcSBA9T8mZDdQpqYBKtCFTOfQbwPqWEOpjqW+Fnayc0969g==}

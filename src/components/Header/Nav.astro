@@ -1,14 +1,13 @@
 ---
-import HeaderLink from './HeaderLink.astro'
+import { navLinks } from '@config'
+import HeaderLinks from './HeaderLinks.astro'
 ---
 
 <>
   <nav class="hidden md:inline">
     <section class="text-text-bold">
       <ul class="unset flex gap-4 [&>li]:p-0">
-        <li><HeaderLink href="/">Home</HeaderLink></li>
-        <li><HeaderLink href="/blog">Blog</HeaderLink></li>
-        <li><HeaderLink href="/projects">Projects</HeaderLink></li>
+        <HeaderLinks links={navLinks} />
       </ul>
     </section>
   </nav>
@@ -31,9 +30,7 @@ import HeaderLink from './HeaderLink.astro'
           <span class="fa-sr-only">Close mobile menu</span>
         </button>
         <ul class="unset flex flex-col gap-4 px-6 text-text-bold [&>li]:p-0">
-          <li><HeaderLink href="/">Home</HeaderLink></li>
-          <li><HeaderLink href="/blog">Blog</HeaderLink></li>
-          <li><HeaderLink href="/projects">Projects</HeaderLink></li>
+          <HeaderLinks links={navLinks} />
         </ul>
       </div>
     </section>
