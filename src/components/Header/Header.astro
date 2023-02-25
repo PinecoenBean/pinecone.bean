@@ -1,0 +1,60 @@
+---
+import IconLink from '@components/Link/IconLink.astro'
+import SkipToContent from '@components/SkipToContent.astro'
+import { siteMetaData } from '@config'
+// import DarkModeToggle from './DarkModeToggle.astro'
+import ThemeToggle from './ThemeToggle'
+import Nav from './Nav.astro'
+---
+
+<header class="my-4">
+  <SkipToContent />
+  <a
+    href="/"
+    class="unset absolute overflow-hidden py-1 text-xl font-semibold text-text-heading sm:static sm:text-2xl md:text-3xl"
+  >
+    <span
+      class="bg-gradient-to-bl from-primary-blue to-primary-blue bg-[length:90%_40%] bg-bottom bg-no-repeat dark:from-primary-blue dark:to-primary-blue"
+    >
+      {siteMetaData.title}
+    </span>
+  </a>
+  <div
+    class="flex content-center items-center justify-self-end py-2 text-text-bold"
+  >
+    <Nav />
+    <!-- <a
+      class="unset ml-4 rounded-sm bg-gradient-to-r from-primary-yellow to-primary-yellow bg-[length:0%_55%] bg-left-bottom bg-no-repeat transition-[background-size] duration-150 ease-in-out hover:bg-[length:100%_55%] dark:bg-none dark:hover:text-primary-yellow"
+      href="https://github.com/PinecoenBean"
+    >
+      <i
+        class="fa-brands fa-github"
+        aria-hidden="true"
+        title="Blogster on GitHub"></i>
+      <span>GitHub</span>
+    </a> -->
+    <IconLink
+      fromColor="blue"
+      toColor="blue"
+      iconClass="fa-brands fa-github"
+      iconTitle="PineconeBean's Github Link"
+      class="ml-4 text-skin-accent"
+      href="https://github.com/PinecoenBean"
+    >
+      Github
+    </IconLink>
+  </div>
+  <ThemeToggle client:load />
+  <div class="col-span-3 my-4 px-0">
+    <hr class="border-border-line" />
+  </div>
+</header>
+<style>
+  header {
+    grid-area: header;
+    display: grid;
+    align-items: center;
+    /* prettier-ignore */
+    grid-template-columns: minmax(0, 1fr) minmax(0, max-content) minmax(0, max-content);
+  }
+</style>

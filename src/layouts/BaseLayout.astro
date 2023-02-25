@@ -1,0 +1,54 @@
+---
+import Footer from '@components/Footer/Footer.astro'
+import Header from '@components/Header/Header.astro'
+import HeadFont from '@components/HeadFont.astro'
+
+import '@styles/global.css'
+
+export interface Props {
+  title: string
+}
+
+const { title } = Astro.props
+---
+
+<!DOCTYPE html>
+<html class="theme-bubblegum" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <HeadFont />
+    <script is:inline>
+      const theme = (() => {
+        if (
+          typeof sessionStorage !== 'undefined' &&
+          sessionStorage.getItem('theme')
+        ) {
+          return sessionStorage.getItem('theme')
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark'
+        }
+        return 'light'
+      })()
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark')
+        document.head.children.namedItem('theme-color').content = '#ffffff'
+      } else {
+        document.documentElement.classList.add('dark')
+        document.head.children.namedItem('theme-color').content = '#0f172a'
+      }
+    </script>
+  </head>
+  <body class="mx-auto flex min-h-screen max-w-3xl flex-col px-6 sm:px-8">
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,33 @@
+---
+export interface Props {
+  url?: string
+  title: string
+  pubDate: string
+}
+const { url, title, pubDate } = Astro.props
+
+const date = new Date(pubDate)
+const formattedDate = new Date(date).toLocaleDateString('en-us', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+})
+---
+
+<li
+  class="mb-3 grid grid-cols-[1fr] items-start md:grid-cols-[1fr_auto] md:gap-2"
+>
+  <div class="title">
+    <a
+      href={url}
+      class="unset bg-gradient-to-r from-primary-blue to-primary-blue bg-[length:0%_55%] bg-left-bottom bg-no-repeat transition-[background-size] duration-300 hover:bg-[length:100%_55%] dark:from-primary-blue dark:to-primary-blue dark:bg-[length:0%_2px] hover:dark:bg-[length:100%_2px]"
+    >
+      {title}
+    </a>
+  </div>
+  <div class="pt-1 text-sm italic opacity-80">
+    <time datetime={date.toISOString()}>
+      {formattedDate}
+    </time>
+  </div>
+</li>

@@ -1,0 +1,33 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+export interface Props extends HTMLAttributes<'a'> {
+  fromColor: string
+  toColor: string
+  iconClass: string
+  iconTitle?: string
+}
+
+const {
+  href,
+  class: className,
+  fromColor,
+  toColor,
+  iconClass,
+  iconTitle,
+  ...props
+} = Astro.props
+---
+
+<a
+  class:list={[
+    className,
+    'unset rounded-sm bg-gradient-to-r bg-[length:0%_55%] bg-left-bottom bg-no-repeat transition-[background-size] duration-150 ease-in-out hover:bg-[length:100%_55%] dark:bg-none dark:hover:text-primary-yellow',
+    `from-primary-${fromColor} to-primary-${toColor}`,
+  ]}
+  {...props}
+  href={href}
+>
+  <i class={iconClass} aria-hidden="true" title={iconTitle}></i>
+  <span><slot /></span>
+</a>
