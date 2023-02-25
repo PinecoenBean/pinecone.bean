@@ -5,7 +5,7 @@ import react from '@astrojs/react'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://pinecone.bean.me',
+  site: 'https://pinecone-bean.me',
   integrations: [
     tailwind({
       config: {
