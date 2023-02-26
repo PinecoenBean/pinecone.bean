@@ -1,19 +1,11 @@
 ---
 import HeaderLink from './HeaderLink.astro'
-
-export interface Props {
-  links: {
-    name: string
-    href: string
-  }[]
-}
-
-const { links } = Astro.props
+import { navLinks } from '@config'
 ---
 
 <>
   {
-    links.map(({ name, href }) => (
+    navLinks.map(({ name, href }) => (
       <li>
         <HeaderLink href={href}>{name}</HeaderLink>
       </li>

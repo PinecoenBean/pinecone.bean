@@ -8,21 +8,23 @@ export interface Props {
 }
 
 const { frontmatter } = Astro.props
+
+const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
+  'en-us',
+  {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  }
+)
 ---
 
 <BaseLayout title={frontmatter.title}>
-  <section class="blog-post prose prose-bubblegum max-w-none">
-    <h1 class="m-0 mb-[0.25em]">
+  <section class="prose prose-bubblegum mx-auto">
+    <h1>
       {frontmatter.title}
     </h1>
-    <time class="mb-[2em] block text-text-muted">{frontmatter.pubDate}</time>
+    <time class="mb-[2em] block text-text-muted">{formattedDate}</time>
     <slot />
   </section>
-  <!-- <h1>{frontmatter.title}</h1>
-  <p>{frontmatter.pubDate.slice(0, 10)}</p>
-  <p><em>{frontmatter.description}</em></p>
-  <p>Written by: {frontmatter.author}</p>
-  <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
-  <Tags tags={frontmatter.tags} />
-  <slot /> -->
 </BaseLayout>

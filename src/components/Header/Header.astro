@@ -4,39 +4,38 @@ import DarkModeToggle from './DarkModeToggle.astro'
 import Nav from './Nav.astro'
 ---
 
-<header
-  class="my-4 grid grid-cols-[minmax(0,1fr)_minmax(0,max-content)_minmax(0,max-content)] items-center"
->
-  <a
-    class="unset absolute left-[50%] -top-[100rem] z-10 translate-x-[-50%] bg-white px-8 py-2 text-black focus:top-[initial]"
-    href="#main"
-  >
-    Skip to content
-  </a>
-  <!-- Website name -->
-  <a
-    href="/"
-    class="unset absolute overflow-hidden py-1 text-xl font-semibold text-text-heading sm:static sm:text-2xl md:text-3xl"
-  >
-    <span
-      class="bg-gradient-to-bl from-primary-blue to-primary-blue bg-[length:90%_40%] bg-bottom bg-no-repeat dark:from-primary-blue dark:to-primary-blue"
+<header>
+  <section class="grid items-center p-4 sm:py-6">
+    <!-- Skip to content -->
+    <a
+      class="unset absolute left-[50%] -top-[100rem] z-10 translate-x-[-50%] bg-white px-8 py-2 text-black focus:top-[initial]"
+      href="#main"
     >
-      {siteMetaData.title}
-    </span>
-  </a>
-  <!-- Nav Items -->
-  <!-- <div
-    class="flex content-center items-center justify-self-end py-2 text-text-bold"
-  > -->
-  <Nav />
-  <!-- </div> -->
-  <DarkModeToggle />
-  <div class="col-span-3 my-4 px-0">
+      Skip to content
+    </a>
+    <!-- Website title -->
+    <a
+      href="/"
+      class="unset overflow-hidden py-1 text-xl font-semibold text-text-heading sm:static sm:text-2xl md:text-3xl"
+    >
+      <span
+        class="bg-gradient-to-bl from-primary-yellow to-primary-yellow bg-[length:90%_40%] bg-bottom bg-no-repeat dark:from-primary-blue dark:to-primary-blue"
+      >
+        {siteMetaData.title}
+      </span>
+    </a>
+    <!-- Navigations -->
+    <Nav />
+    <DarkModeToggle />
+  </section>
+  <!-- borderline -->
+  <div>
     <hr class="border-border-line" />
   </div>
 </header>
+
 <style>
-  header {
+  section {
     /* prettier-ignore */
     grid-template-columns: minmax(0, 1fr) minmax(0, max-content) minmax(0, max-content);
   }

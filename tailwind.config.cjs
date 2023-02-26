@@ -34,6 +34,11 @@ module.exports = {
           code: 'rgb(var(--color-border-code) / <alpha-value>)',
           line: 'rgb(var(--color-border-line) / <alpha-value>)'
         },
+        paper: {
+          fill: 'rgb(var(--color-fill) / <alpha-value>)',
+          card: 'rgb(var(--color-card) / <alpha-value>)',
+          'card-muted': 'rgb(var(--color-card-muted) / <alpha-value>)'
+        }
       },
       typography: {
         DEFAULT: {

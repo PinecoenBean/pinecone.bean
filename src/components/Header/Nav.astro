@@ -1,15 +1,12 @@
 ---
-import { navLinks } from '@config'
 import HeaderLinks from './HeaderLinks.astro'
 ---
 
 <>
-  <nav class="hidden md:inline">
-    <section class="text-text-bold">
-      <ul class="unset flex gap-4 [&>li]:p-0">
-        <HeaderLinks links={navLinks} />
-      </ul>
-    </section>
+  <nav class="hidden text-text-bold md:inline">
+    <ul class="unset flex gap-4 [&>li]:p-0">
+      <HeaderLinks />
+    </ul>
   </nav>
   <nav class="md:hidden">
     <button id="mobile-menu-open">
@@ -30,7 +27,7 @@ import HeaderLinks from './HeaderLinks.astro'
           <span class="fa-sr-only">Close mobile menu</span>
         </button>
         <ul class="unset flex flex-col gap-4 px-6 text-text-bold [&>li]:p-0">
-          <HeaderLinks links={navLinks} />
+          <HeaderLinks />
         </ul>
       </div>
     </section>
@@ -45,12 +42,14 @@ import HeaderLinks from './HeaderLinks.astro'
     document.body.style.overflow = 'hidden'
   })
 
-  document.querySelector('#mobile-menu-close')!.addEventListener('click', () => {
-    const menuElem = document.querySelector('#mobile-menu')
-    menuElem!.classList.remove('show-menu')
-    menuElem!.classList.add('hide-menu')
-    document.body.style.overflow = 'auto'
-  })
+  document
+    .querySelector('#mobile-menu-close')!
+    .addEventListener('click', () => {
+      const menuElem = document.querySelector('#mobile-menu')
+      menuElem!.classList.remove('show-menu')
+      menuElem!.classList.add('hide-menu')
+      document.body.style.overflow = 'auto'
+    })
 </script>
 
 <style>
