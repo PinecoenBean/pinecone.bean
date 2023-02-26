@@ -15,4 +15,15 @@ export default defineConfig({
     mdx(),
     react(),
   ],
+  markdown: {
+    remarkPlugins: ['remark-math'],
+    rehypePlugins: [
+      [
+        'rehype-katex',
+        {
+          // Katex plugin options
+        },
+      ],
+    ],
+  },
 })

@@ -20,6 +20,7 @@ const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
 ---
 
 <BaseLayout title={frontmatter.title}>
+  <link rel="stylesheet" href="/katex/katex.min.css" crossorigin="anonymous" slot="head" />
   <section class="prose prose-bubblegum mx-auto">
     <h1>
       {frontmatter.title}
