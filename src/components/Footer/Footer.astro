@@ -1,25 +1,17 @@
 ---
+import IconLink from "@components/Link/IconLink.astro";
+
+const currentYear = new Date().getFullYear();
 ---
 
-<footer
-  class="mt-auto flex items-center justify-center text-center text-sm leading-[1.75]"
->
-  <div>
-    This blog is built with
-    <a
-      class="unset gradient-link bg-gradient-to-r from-[#f57111] to-[#f79605] bg-clip-text font-bold tracking-wider text-transparent hover:after:bg-gradient-to-r hover:after:from-[#f57111] hover:after:to-[#f79605]"
-      href={'https://github.com/flexdinesh/blogster'}
-      target="_blank"
-    >
-      Blogster</a
-    > and hosted in
-    <a
-      class="unset gradient-link bg-gradient-to-r from-[#00abda] to-[#1476ff] bg-clip-text font-bold tracking-wider text-transparent hover:after:bg-gradient-to-r hover:after:from-[#00abda] hover:after:to-[#1476ff]"
-      href={'https://www.github.com'}
-      target="_blank"
-    >
-      Github Pages</a
-    >.
+<footer class="mt-auto">
+  <hr class="border-border-line" />
+  <div class="my-4 flex items-center justify-center text-center text-sm leading-[1.75]">
+    <span>&#169; {currentYear}</span>
+    <span class="hidden sm:inline">&nbsp;|&nbsp;</span>
+    <IconLink fromColor="yellow" toColor="yellow" iconClass="fa-brands fa-github">
+      Github
+    </IconLink>
   </div>
 </footer>
 
