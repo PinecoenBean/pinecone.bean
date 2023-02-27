@@ -1,9 +1,9 @@
 ---
 import BlogPost from '@components/BlogPost.astro'
 import BaseLayout from '@layouts/BaseLayout.astro'
-import type { FrontMatter } from '@types'
+import { getCollection } from 'astro:content'
 
-const allPosts = await Astro.glob<FrontMatter>('../pages/posts/*.md')
+const allPosts = await getCollection('blog')
 ---
 
 <BaseLayout title="Blogs">
@@ -12,9 +12,9 @@ const allPosts = await Astro.glob<FrontMatter>('../pages/posts/*.md')
     {
       allPosts.map((post) => (
         <BlogPost
-          url={post.url}
-          title={post.frontmatter.title}
-          pubDate={post.frontmatter.pubDate}
+          url={`/blog/${post.slug}`}
+          title={post.data.title}
+          pubDate={post.data.pubDate}
         />
       ))
     }

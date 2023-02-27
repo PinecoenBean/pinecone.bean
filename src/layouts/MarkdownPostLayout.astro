@@ -8,6 +8,7 @@ export interface Props {
 }
 
 const { frontmatter } = Astro.props
+console.log(frontmatter.pubDate)
 
 const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
   'en-us',

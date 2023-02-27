@@ -2,12 +2,11 @@
 export interface Props {
   url?: string
   title: string
-  pubDate: string
+  pubDate: Date
 }
 const { url, title, pubDate } = Astro.props
 
-const date = new Date(pubDate)
-const formattedDate = date.toLocaleDateString('en-us', {
+const formattedDate = pubDate.toLocaleDateString('en-us', {
   year: 'numeric',
   month: 'short',
   day: 'numeric',
@@ -26,7 +25,7 @@ const formattedDate = date.toLocaleDateString('en-us', {
     </a>
   </div>
   <div class="pt-1 text-sm italic opacity-80">
-    <time datetime={date.toISOString()}>
+    <time datetime={pubDate.toISOString()}>
       {formattedDate}
     </time>
   </div>
