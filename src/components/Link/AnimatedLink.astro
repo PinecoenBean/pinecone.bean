@@ -1,0 +1,44 @@
+---
+import type { LinkAttributes } from '@types';
+export type Props = LinkAttributes
+
+const { active, href, class: className, ...props } = Astro.props
+---
+
+<a
+  href={href}
+  class:list={[className, { show: active }, 'unset animated-link']}
+  {...props}
+>
+  <slot />
+</a>
+
+<style>
+  .animated-link {
+    position: relative;
+    text-decoration: none;
+    box-decoration-break: clone;
+  }
+
+  .animated-link.show:after,
+  .animated-link:hover:after {
+    transform: translateZ(0) scale(1);
+  }
+
+  .animated-link:after {
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    content: '';
+    height: 2px;
+    position: absolute;
+    transform: translateZ(0) scaleX(0);
+    transform-origin: left center;
+    transition: all 0.15s ease-in-out;
+    background-image: linear-gradient(
+      to right,
+      theme('colors.text.link'),
+      theme('colors.text.link')
+    );
+  }
+</style>

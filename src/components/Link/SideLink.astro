@@ -1,0 +1,25 @@
+---
+import type { LinkAttributes } from '@types'
+
+export type Props = LinkAttributes
+
+const { active, href, class: className, ...props } = Astro.props
+---
+
+<a
+  href={href}
+  class:list={[className, active ? 'link-active' : 'link-inactive', 'unset']}
+  {...props}
+>
+  <slot />
+</a>
+
+<style>
+  .link-active {
+    @apply -ml-px border-l border-current pl-4 font-semibold text-text-link;
+  }
+
+  .link-inactive {
+    @apply -ml-px block border-l border-transparent pl-4 hover:border-slate-400;
+  }
+</style>

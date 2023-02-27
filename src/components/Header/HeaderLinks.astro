@@ -1,13 +1,34 @@
 ---
-import HeaderLink from './HeaderLink.astro'
 import { navLinks } from '@config'
+import SideLink from '@components/Link/SideLink.astro'
+import AnimatedLink from '@components/Link/AnimatedLink.astro'
+
+export interface Props {
+  class?: string
+  sideLink?: boolean
+}
+
+const {class: className, sideLink} = Astro.props
+
+function isActive(href: string) {
+  const path = Astro.url.pathname.replace(/\/$/, '')
+  const isHome = href === '/' && path === ''
+  const isOtherPages =
+    typeof href === 'string' && href.length > 1
+      ? path.substring(1).startsWith(href.substring(1))
+      : false
+  return isHome || isOtherPages
+}
+
+
+const Link = sideLink ? SideLink : AnimatedLink
 ---
 
 <>
   {
     navLinks.map(({ name, href }) => (
       <li>
-        <HeaderLink href={href}>{name}</HeaderLink>
+        <Link active={isActive(href)} class={className} href={href} >{name}</Link>
       </li>
     ))
   }

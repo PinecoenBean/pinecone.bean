@@ -18,16 +18,16 @@ import HeaderLinks from './HeaderLinks.astro'
       id="mobile-menu"
       class="hide-menu fixed top-0 left-0 z-10 h-full w-full border-primary-blue bg-black/75 transition-transform"
     >
-      <div class="h-full w-[75%] bg-bg-body drop-shadow-2xl">
-        <button id="mobile-menu-close" class="xml-[1px] h-[5rem] px-6 text-lg">
+      <div class="h-full w-[75%] bg-white drop-shadow-2xl">
+        <button id="mobile-menu-close" class="h-[5rem] px-6 text-lg">
           <i
             class="fa-solid fa-xmark"
             aria-hidden="true"
             title="Close mobile menu"></i>
           <span class="fa-sr-only">Close mobile menu</span>
         </button>
-        <ul class="unset flex flex-col gap-4 px-6 text-text-bold [&>li]:p-0">
-          <HeaderLinks />
+        <ul class="unset flex flex-col gap-2 mx-6 text-text-bold [&>li]:p-0 border-l border-slate-100 dark:border-slate-800">
+          <HeaderLinks class="block"  sideLink />
         </ul>
       </div>
     </section>
