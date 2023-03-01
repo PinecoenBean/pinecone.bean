@@ -1,11 +1,11 @@
 ---
-import { siteMetaData } from '@config'
+import { SITE } from '@config'
 import DarkModeToggle from './DarkModeToggle.astro'
 import Nav from './Nav.astro'
 ---
 
 <header>
-  <section class="grid items-center p-4 sm:py-6">
+  <section class="grid items-center py-5">
     <!-- Skip to content -->
     <a
       class="unset absolute left-[50%] -top-[100rem] z-10 translate-x-[-50%] bg-white px-8 py-2 text-black focus:top-[initial]"
@@ -21,7 +21,7 @@ import Nav from './Nav.astro'
       <span
         class="bg-gradient-to-bl from-primary-yellow to-primary-yellow bg-[length:90%_40%] bg-bottom bg-no-repeat dark:from-primary-blue dark:to-primary-blue"
       >
-        {siteMetaData.title}
+        {SITE.title}
       </span>
     </a>
     <!-- Navigations -->

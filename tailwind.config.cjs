@@ -32,7 +32,8 @@ module.exports = {
         },
         border: {
           code: 'rgb(var(--color-border-code) / <alpha-value>)',
-          line: 'rgb(var(--color-border-line) / <alpha-value>)'
+          line: 'rgb(var(--color-border-line) / <alpha-value>)',
+          tag: 'rgb(var(--color-border-tag) / <alpha-value>)'
         },
         paper: {
           fill: 'rgb(var(--color-fill) / <alpha-value>)',

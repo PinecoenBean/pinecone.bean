@@ -1,9 +1,24 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import { getCollection } from 'astro:content'
+import RecentPost from '@components/BlogPost/RecentPost.astro'
+import { SITE } from '@config'
+
+const allPosts = await getCollection('blog')
+const recentPosts = allPosts
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, SITE.numRecentPosts)
 ---
 
 <BaseLayout title="Home | pinecone-bean.me">
-  <div class="flex justify-center">
-    <h1 class="text-5xl">Under Construction</h1>
-  </div>
+  <!-- Pinned -->
+  <!-- Recent -->
+  <section>
+    <h1 class="mb-4 text-4xl">Recent Posts</h1>
+    {
+      recentPosts.map((post) => (
+        <RecentPost frontmatter={post.data} href={`/blog/${post.slug}`} class="mb-12" />
+      ))
+    }
+  </section>
 </BaseLayout>

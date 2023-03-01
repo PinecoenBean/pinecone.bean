@@ -23,11 +23,13 @@
     --color-text-code: 0 0 0;
     --color-text-selection: 251 254 251;
 
-    --color-bg-body: 251 254 251;
+    /* --color-bg-body: 251 254 251; */
+    --color-bg-body: 255 255 255;
     --color-bg-code: 254 243 199;
     --color-bg-selection: 0 108 172;
     --color-border-code: 255 237 213;
     --color-border-line: 236 233 233;
+    --color-border-tag: 0 108 172;
 
     /* from astro-paper theme */
     --color-fill: 251 254 251;
@@ -59,6 +61,7 @@
 
     --color-border-code: 254 243 199;
     --color-border-line: 236 233 233;
+    --color-border-tag: 255 107 1;
 
     /* from astro-paper theme */
     --color-fill: 33 39 55;

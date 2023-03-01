@@ -27,6 +27,7 @@ specifiers:
   react-dom: ^18.2.0
   rehype-katex: ^6.0.2
   remark-math: ^5.1.1
+  slugify: ^1.6.5
   tailwindcss: ^3.2.7
   typescript: ^4.9.5
 
@@ -59,6 +60,7 @@ devDependencies:
   prettier-plugin-tailwindcss: 0.2.3_cfgkwvtfb3vmyej4cugnuognhu
   rehype-katex: 6.0.2
   remark-math: 5.1.1
+  slugify: 1.6.5
   tailwindcss: 3.2.7
   typescript: 4.9.5
 
@@ -4345,6 +4347,11 @@ packages:
   /slash/4.0.0:
     resolution: {integrity: sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==}
     engines: {node: '>=12'}
+
+  /slugify/1.6.5:
+    resolution: {integrity: sha512-8mo9bslnBO3tr5PEVFzMPIWwWnipGS0xVbYf65zxDqfNwmzYn1LpiKNrR6DlClusuvo+hDHd1zKpmfAe83NQSQ==}
+    engines: {node: '>=8.0.0'}
+    dev: true
 
   /source-map-js/1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}

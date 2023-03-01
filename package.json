@@ -38,6 +38,7 @@
     "prettier-plugin-tailwindcss": "^0.2.3",
     "rehype-katex": "^6.0.2",
     "remark-math": "^5.1.1",
+    "slugify": "^1.6.5",
     "tailwindcss": "^3.2.7",
     "typescript": "^4.9.5"
   },
