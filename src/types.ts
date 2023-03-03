@@ -12,7 +12,6 @@ export interface FrontMatter {
   // }
 }
 
-
 export interface LinkAttributes extends HTMLAttributes<'a'> {
   active: boolean
 }

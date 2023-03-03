@@ -209,3 +209,7 @@
 .fa-envelope::before {
   content: '\f0e0';
 }
+
+.fa-tag::before {
+  content: "\f02b";
+}

@@ -1,5 +1,4 @@
 ---
-layout: '@layouts/MarkdownPostLayout.astro'
 title: 'Input Setting of Deep Learning based HDR'
 pubDate: 2023-02-01
 author: 'Junda Liao'

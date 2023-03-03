@@ -11,7 +11,7 @@ const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())]
     {
       tags.map((tag) => (
         <p class="tag">
-          <a href={`/tags/${tag}`}>{tag}</a>
+          <a class="unset" href={`/tags/${tag}`}>{tag}</a>
         </p>
       ))
     }
@@ -20,7 +20,7 @@ const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())]
 
 <style>
   a {
-    color: #00539f;
+    color: rgb(0, 83, 159);
   }
 
   .tags {

@@ -1,22 +1,55 @@
 ---
-import BlogPost from '@components/BlogPost.astro'
+import PostGroup from '@components/BlogPost/PostGroup.astro'
+import Tag from '@components/Tag.astro'
 import BaseLayout from '@layouts/BaseLayout.astro'
-import { getCollection } from 'astro:content'
+import { CollectionEntry, getCollection } from 'astro:content'
 
 const allPosts = await getCollection('blog')
+// allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+
+function getTotalMonths(entry: CollectionEntry<'blog'>) {
+  return entry.data.pubDate.getFullYear() * 12 + entry.data.pubDate.getMonth()
+}
+
+// reference: https://stackoverflow.com/questions/42136098/array-groupby-in-typescript
+const groupedPosts = allPosts.reduce((group, curr) => {
+  const key = getTotalMonths(curr)
+  group[key] = group[key] || []
+  group[key].push(curr)
+  return group
+}, {} as Record<number, CollectionEntry<'blog'>[]>)
+
+const sortedGroupedPost = Object.keys(groupedPosts).sort(
+  (a, b) => Number(b) - Number(a)
+)
+
+const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())]
 ---
 
 <BaseLayout title="Blogs">
-  <p>This is where I will post about my journey learning Astro.</p>
-  <ul>
-    {
-      allPosts.map((post) => (
-        <BlogPost
-          url={`/blog/${post.slug}`}
-          title={post.data.title}
-          pubDate={post.data.pubDate}
-        />
-      ))
-    }
-  </ul>
+  <div class="blog-section lg:grid lg:grid-cols-[auto_300px] lg:gap-6">
+    <div class="min-w-xl w-full">
+      <h1 class="mb-8 text-3xl">The Complete Archives</h1>
+      <ul>
+        {
+          sortedGroupedPost.map((key) => (
+            <PostGroup posts={groupedPosts[Number(key)]} />
+          ))
+        }
+      </ul>
+    </div>
+    <div class="hidden lg:block">
+      <aside class="sticky top-6">
+        <div class="border border-border-base bg-bg-body p-4 rounded-sm">
+          <h1 class="mb-2">
+            <i class="fa-regular fa-tag"></i>
+            <span>Tags</span>
+          </h1>
+          <div class="flex flex-wrap gap-2 text-sm">
+            {tags.map((tag) => <Tag href={`/tag/${tag}`} name={tag} />)}
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
 </BaseLayout>

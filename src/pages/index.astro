@@ -3,6 +3,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
 import { getCollection } from 'astro:content'
 import RecentPost from '@components/BlogPost/RecentPost.astro'
 import { SITE } from '@config'
+import IconLink from '@components/Link/IconLink.astro'
+import BlogPost from '@components/BlogPost.astro'
 
 const allPosts = await getCollection('blog')
 const recentPosts = allPosts
@@ -14,11 +16,42 @@ const recentPosts = allPosts
   <!-- Pinned -->
   <!-- Recent -->
   <section>
-    <h1 class="mb-4 text-4xl">Recent Posts</h1>
-    {
+    <h1 class="text-4xl">
+      Hello
+    </h1>
+    <div class="mt-4 flex gap-4 text-lg">
+      <p>Find me on</p>
+      <IconLink
+        fromColor="yellow"
+        toColor="yellow"
+        iconClass="fa-brands fa-github"
+        href="https://github.com/pineconebean"
+      >
+        Github
+      </IconLink>
+      <IconLink
+        fromColor="blue"
+        toColor="blue"
+        iconClass="fa-solid fa-envelope"
+        href="mailto:liaojd98@gmail.com"
+      >
+        Mail
+      </IconLink>
+    </div>
+  </section>
+  <section class="w-full mt-16">
+    <h1 class="mb-4 text-3xl">Recent Posts</h1>
+    <ul>
+      {
+        recentPosts.map((post) => (
+          <BlogPost pubDate={post.data.pubDate} title={post.data.title} url={`/blog/${post.slug}`} />
+        ))
+      }
+    </ul>
+    <!-- {
       recentPosts.map((post) => (
-        <RecentPost frontmatter={post.data} href={`/blog/${post.slug}`} class="mb-12" />
+        <RecentPost frontmatter={post.data} href={`/blog/${post.slug}`} class="mb-4" />
       ))
-    }
+    } -->
   </section>
 </BaseLayout>

@@ -1,0 +1,49 @@
+---
+import TocPanel from '@components/TocPanel.astro'
+import type { MarkdownHeading } from 'astro'
+import type { CollectionEntry } from 'astro:content'
+import BaseLayout from './BaseLayout.astro'
+
+export interface Props {
+  frontmatter: CollectionEntry<'blog'>['data']
+  headings: MarkdownHeading[]
+}
+
+const { frontmatter, headings } = Astro.props
+
+const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
+  'en-us',
+  {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  }
+)
+---
+
+<BaseLayout title={frontmatter.title}>
+  <link
+    rel="stylesheet"
+    href="/katex/katex.min.css"
+    crossorigin="anonymous"
+    slot="head"
+  />
+  <div class="lg:grid lg:grid-cols-4">
+    <article class="prose prose-newspaper lg:col-span-3">
+      <h1>
+        {frontmatter.title}
+      </h1>
+      <time class="mb-[2em] block text-text-muted">{formattedDate}</time>
+      <slot />
+    </article>
+    {
+      headings && (
+        <aside class="hidden lg:block">
+          <div class="sticky top-5 border-l-2 border-black">
+            <TocPanel headings={headings} />
+          </div>
+        </aside>
+      )
+    }
+  </div>
+</BaseLayout>

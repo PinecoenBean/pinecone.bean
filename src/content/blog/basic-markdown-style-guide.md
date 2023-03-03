@@ -1,12 +1,8 @@
 ---
-title: 'Basic Style'
-pubDate: 2022-07-01
-description: 'This is an example post to demonstrate all the basic markdown syntax. You can author content using the familiar markdown syntax you already know.'
-author: 'Astro Learner'
-image:
-  url: 'https://astro.build/assets/blog/astro-1-release-update/cover.jpeg'
-  alt: 'The Astro logo with the word One.'
-tags: ['astro', 'blogging', 'learning in public']
+title: "Basic markdown style guide"
+description: "You can author content using the familiar markdown syntax you already know. All basic markdown syntax is supported."
+pubDate: 2022-11-02
+tags: ['template']
 ---
 
 Markdown is powered by [Markdoc](https://markdoc.dev/). This is an example post to demonstrate all the basic markdown syntax. You can author content using the familiar markdown syntax you already know.

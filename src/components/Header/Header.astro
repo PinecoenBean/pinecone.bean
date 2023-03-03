@@ -4,34 +4,29 @@ import DarkModeToggle from './DarkModeToggle.astro'
 import Nav from './Nav.astro'
 ---
 
-<header>
-  <section class="grid items-center py-5">
-    <!-- Skip to content -->
-    <a
-      class="unset absolute left-[50%] -top-[100rem] z-10 translate-x-[-50%] bg-white px-8 py-2 text-black focus:top-[initial]"
-      href="#main"
-    >
-      Skip to content
-    </a>
-    <!-- Website title -->
-    <a
-      href="/"
-      class="unset overflow-hidden py-1 text-xl font-semibold text-text-heading sm:static sm:text-2xl md:text-3xl"
-    >
-      <span
-        class="bg-gradient-to-bl from-primary-yellow to-primary-yellow bg-[length:90%_40%] bg-bottom bg-no-repeat dark:from-primary-blue dark:to-primary-blue"
+<header class="pt-8">
+  <a
+    class="unset absolute left-[50%] -top-[100rem] z-10 translate-x-[-50%] bg-white px-8 py-2 text-black focus:top-[initial]"
+    href="#main"
+  >
+    Skip to content
+  </a>
+  <div class="mb-3 flex justify-between">
+    <h1>
+      <a
+        href="/"
+        class="unset my-3 overflow-hidden py-1 text-xl font-semibold sm:static sm:text-2xl"
       >
         {SITE.title}
-      </span>
-    </a>
-    <!-- Navigations -->
-    <Nav />
-    <DarkModeToggle />
-  </section>
-  <!-- borderline -->
-  <div>
-    <hr class="border-border-line" />
+      </a>
+    </h1>
+    <div class="flex gap-4 mb-2">
+      <Nav />
+      <DarkModeToggle />
+    </div>
   </div>
+  <!-- borderline -->
+  <hr class="border-text-muted/30" />
 </header>
 
 <style>

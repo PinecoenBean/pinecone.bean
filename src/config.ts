@@ -15,8 +15,8 @@ export const NUM_RECENT_POSTS = 3
 export const SITE = {
   website: 'https://astro-paper.pages.dev/',
   author: 'Junda Liao',
-  title: 'PineconeBean',
-  numRecentPosts: 3
+  title: 'pinecone-bean',
+  numRecentPosts: 5
 }
 
 export const navLinks = [

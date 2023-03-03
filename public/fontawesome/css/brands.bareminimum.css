@@ -50,3 +50,11 @@
 .fa-twitter-square:before {
   content: "\f081";
 }
+
+.fa-calendar-days::before {
+  content: "\f073";
+}
+
+.fa-calendar-alt::before {
+  content: "\f073";
+}

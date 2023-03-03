@@ -1,12 +1,11 @@
 ---
 export interface Props {
   href: string
+  name: string
 }
-const { href } = Astro.props
+const { href, name } = Astro.props
 ---
 
-<div class="border border-solid border-border-tag px-2">
-  <a class="unset" href={href}>
-    #<slot />
-  </a>
-</div>
+<a class="unset border-text-link border border-solid px-2" href={href}>
+  # {name}
+</a>

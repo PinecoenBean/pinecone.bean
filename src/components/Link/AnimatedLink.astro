@@ -1,8 +1,8 @@
 ---
-import type { LinkAttributes } from '@types';
+import type { LinkAttributes } from '@types'
 export type Props = LinkAttributes
 
-const { active, href, class: className, ...props } = Astro.props
+const { active = false, href, class: className, ...props } = Astro.props
 ---
 
 <a
