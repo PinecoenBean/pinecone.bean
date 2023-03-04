@@ -1,7 +1,7 @@
 import mdx from '@astrojs/mdx'
 import tailwind from '@astrojs/tailwind'
 import { defineConfig } from 'astro/config'
-import react from '@astrojs/react'
+import preact from '@astrojs/preact'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 
@@ -15,7 +15,7 @@ export default defineConfig({
       },
     }),
     mdx(),
-    react(),
+    preact(),
   ],
   markdown: {
     remarkPlugins: [remarkMath],

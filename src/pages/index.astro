@@ -1,10 +1,9 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
-import { getCollection } from 'astro:content'
-import RecentPost from '@components/BlogPost/RecentPost.astro'
-import { SITE } from '@config'
-import IconLink from '@components/Link/IconLink.astro'
 import BlogPost from '@components/BlogPost.astro'
+import IconLink from '@components/Link/IconLink.astro'
+import { SITE } from '@config'
+import { getCollection } from 'astro:content'
 
 const allPosts = await getCollection('blog')
 const recentPosts = allPosts
@@ -16,9 +15,7 @@ const recentPosts = allPosts
   <!-- Pinned -->
   <!-- Recent -->
   <section>
-    <h1 class="text-4xl">
-      Hello
-    </h1>
+    <h1 class="text-4xl">Hello</h1>
     <div class="mt-4 flex gap-4 text-lg">
       <p>Find me on</p>
       <IconLink
@@ -39,12 +36,16 @@ const recentPosts = allPosts
       </IconLink>
     </div>
   </section>
-  <section class="w-full mt-16">
+  <section class="mt-16 w-full">
     <h1 class="mb-4 text-3xl">Recent Posts</h1>
     <ul>
       {
         recentPosts.map((post) => (
-          <BlogPost pubDate={post.data.pubDate} title={post.data.title} url={`/blog/${post.slug}`} />
+          <BlogPost
+            pubDate={post.data.pubDate}
+            title={post.data.title}
+            url={`/blog/${post.slug}`}
+          />
         ))
       }
     </ul>

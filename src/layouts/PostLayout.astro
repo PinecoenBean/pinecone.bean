@@ -1,8 +1,10 @@
 ---
-import TocPanel from '@components/TocPanel.astro'
+import TableOfContents from '@components/TableOfContents'
 import type { MarkdownHeading } from 'astro'
 import type { CollectionEntry } from 'astro:content'
 import BaseLayout from './BaseLayout.astro'
+import { SITE } from '@config'
+import RecentPost from '@components/BlogPost/RecentPost.astro'
 
 export interface Props {
   frontmatter: CollectionEntry<'blog'>['data']
@@ -19,6 +21,15 @@ const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
     day: 'numeric',
   }
 )
+const overview = {
+  depth: 2,
+  slug: 'overview-0',
+  text: 'Overview',
+}
+const headingsToShow = [
+  overview,
+  ...headings.filter((h) => h.depth > 1 && h.depth <= SITE.maxTocDepth),
+]
 ---
 
 <BaseLayout title={frontmatter.title}>
@@ -29,8 +40,10 @@ const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
     slot="head"
   />
   <div class="lg:grid lg:grid-cols-4">
-    <article class="prose prose-newspaper lg:col-span-3">
-      <h1>
+    <article
+      class="prose prose-newspaper max-w-full lg:col-span-3 lg:max-w-prose"
+    >
+      <h1 id="overview-0">
         {frontmatter.title}
       </h1>
       <time class="mb-[2em] block text-text-muted">{formattedDate}</time>
@@ -38,12 +51,24 @@ const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
     </article>
     {
       headings && (
-        <aside class="hidden lg:block">
-          <div class="sticky top-5 border-l-2 border-black">
-            <TocPanel headings={headings} />
+        <aside class="prose-toc font-prose hidden text-sm lg:col-span-1 lg:block">
+          <div class="sticky top-5 border-l-4 border-black">
+            <TableOfContents
+              client:visible
+              headings={headingsToShow}
+              className="pl-2"
+            />
           </div>
         </aside>
       )
     }
   </div>
+  <div class="my-8">
+    <h1 class="text-3xl">Related Posts</h1>
+    <RecentPost class="mt-4" frontmatter={frontmatter} href="" />
+  </div>
+  <div class="border border-black min-h-[300px] mt-8 p-8 text-center md:text-3xl">
+    Used for comments
+  </div>
+  <!-- <TocPanel headings={headings} class="pl-2" maxDepth={3}/> -->
 </BaseLayout>

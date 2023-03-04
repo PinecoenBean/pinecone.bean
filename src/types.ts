@@ -1,3 +1,4 @@
+import type { MarkdownHeading } from 'astro'
 import type { HTMLAttributes } from 'astro/types'
 
 export interface FrontMatter {
@@ -14,4 +15,8 @@ export interface FrontMatter {
 
 export interface LinkAttributes extends HTMLAttributes<'a'> {
   active: boolean
+}
+
+export interface TocItem extends MarkdownHeading {
+  children: TocItem[]
 }
