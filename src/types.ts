@@ -20,3 +20,11 @@ export interface LinkAttributes extends HTMLAttributes<'a'> {
 export interface TocItem extends MarkdownHeading {
   children: TocItem[]
 }
+
+export interface SearchItem {
+  title: string
+  description: string
+  tags: string[]
+  id: string
+  slug: string
+}

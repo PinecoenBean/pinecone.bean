@@ -6,7 +6,6 @@ import { CollectionEntry, getCollection } from 'astro:content'
 
 const allPosts = await getCollection('blog')
 // allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-
 function getTotalMonths(entry: CollectionEntry<'blog'>) {
   return entry.data.pubDate.getFullYear() * 12 + entry.data.pubDate.getMonth()
 }

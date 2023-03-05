@@ -10,15 +10,18 @@
     "lint:eslint": "eslint ."
   },
   "dependencies": {
-    "astro": "^2.0.15",
     "fuse.js": "^6.6.2"
   },
   "devDependencies": {
+    "astro": "^2.0.15",
+    "@astrojs/react": "^2.0.2",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
     "@astrojs/mdx": "^0.17.2",
-    "@astrojs/preact": "^2.0.3",
     "@astrojs/prism": "^2.0.0",
     "@astrojs/rss": "^2.1.1",
     "@astrojs/tailwind": "^3.0.1",
+    "@headlessui/react": "^1.7.13",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "^18.14.1",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
@@ -29,10 +32,11 @@
     "eslint-plugin-astro": "^0.23.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.32.2",
-    "preact": "^10.13.0",
     "prettier": "^2.8.4",
     "prettier-plugin-astro": "^0.8.0",
     "prettier-plugin-tailwindcss": "^0.2.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rehype-katex": "^6.0.2",
     "remark-math": "^5.1.1",
     "slugify": "^1.6.5",

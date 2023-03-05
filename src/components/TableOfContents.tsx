@@ -1,5 +1,5 @@
 import type { MarkdownHeading } from 'astro'
-import { useEffect } from 'preact/hooks'
+import { useEffect } from 'react'
 
 export interface Props {
   headings: MarkdownHeading[]
@@ -36,9 +36,6 @@ function getCurrentIndex(headings: MarkdownHeading[], hash: string) {
 }
 
 export default function TableOfContents({ headings, className }: Props) {
-  console.log('render happens')
-  console.log(headings)
-  
   useEffect(() => {
     const tocItems = headings.map((h) => document.getElementById(getTocId(h.slug))!)
     let currentIndex = getCurrentIndex(headings, window.location.hash.slice(1))
@@ -51,7 +48,6 @@ export default function TableOfContents({ headings, className }: Props) {
     
     setActiveH(currentIndex)
     
-    console.log('effect happen')
     const onScroll = () => {
       for (let i = 0; i < headings.length - 1; i++) {
         const nextElement = document.getElementById(headings[i + 1].slug)!
