@@ -7,7 +7,8 @@ const blogCollection = defineCollection({
     tags: z.array(z.string()),
     pubDate: z.date(),
     description: z.string(),
-    pinned: z.boolean().optional()
+    pinned: z.boolean().optional(),
+    relatedPosts: z.array(z.string()).optional()
   }),
 })
 // 3. Export a single `collections` object to register your collection(s)

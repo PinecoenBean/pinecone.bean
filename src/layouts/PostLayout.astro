@@ -1,17 +1,18 @@
 ---
+import RelatedPost from '@components/BlogPost/RelatedPost.astro'
 import TableOfContents from '@components/TableOfContents'
+import { SITE } from '@config'
 import type { MarkdownHeading } from 'astro'
 import type { CollectionEntry } from 'astro:content'
 import BaseLayout from './BaseLayout.astro'
-import { SITE } from '@config'
-import RecentPost from '@components/BlogPost/RecentPost.astro'
 
 export interface Props {
   frontmatter: CollectionEntry<'blog'>['data']
   headings: MarkdownHeading[]
+  relatedPosts:  CollectionEntry<'blog'>[]
 }
 
-const { frontmatter, headings } = Astro.props
+const { frontmatter, headings, relatedPosts } = Astro.props
 
 const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
   'en-us',
@@ -52,7 +53,7 @@ const headingsToShow = [
     {
       headings && (
         <aside class="prose-toc font-prose hidden text-sm lg:col-span-1 lg:block">
-          <div class="sticky top-5 border-l-4 border-border-base">
+          <div class="border-border-base sticky top-5 border-l-4">
             <TableOfContents
               client:visible
               headings={headingsToShow}
@@ -65,10 +66,19 @@ const headingsToShow = [
   </div>
   <div class="my-8">
     <h1 class="text-3xl">Related Posts</h1>
-    <RecentPost class="mt-4" frontmatter={frontmatter} href="" />
+    {
+      relatedPosts.map((related) => (
+        <RelatedPost
+          class="mt-4 mb-8"
+          frontmatter={related.data}
+          href={`/blog/${related.slug}`}
+        />
+      ))
+    }
   </div>
-  <div class="border border-black min-h-[300px] mt-8 p-8 text-center md:text-3xl">
+  <div
+    class="mt-8 min-h-[300px] border border-black p-8 text-center md:text-3xl"
+  >
     Used for comments
   </div>
-  <!-- <TocPanel headings={headings} class="pl-2" maxDepth={3}/> -->
 </BaseLayout>
