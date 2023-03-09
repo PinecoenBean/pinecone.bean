@@ -43,7 +43,8 @@ Generate ghost-free HDR images from bracketed exposures.
 ##### Equation
 
 $$
-E(H) = \sum_{p \in pixels} [\alpha_{ref}(H(p) - h(L_{ref})(p))^2 + (1 - \alpha_{ref})  E_{MBDS}(H|L1, L2, \dots, L_N)]
+E(H) = \sum_{p \in pixels} [\alpha_{ref}(H(p) - h(L_{ref})(p))^2 + \\
+ (1 - \alpha_{ref})  E_{MBDS}(H|L1, L2, \dots, L_N)]
 $$
 
 - $\alpha_{ref}$ : trapezoid function indicating how well a pixel is exposed. $H$ : HDR result. $h$ : the function map LDR image to the linear domain. $L$ : LDR images.

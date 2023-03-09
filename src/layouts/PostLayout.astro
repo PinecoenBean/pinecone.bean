@@ -9,7 +9,7 @@ import BaseLayout from './BaseLayout.astro'
 export interface Props {
   frontmatter: CollectionEntry<'blog'>['data']
   headings: MarkdownHeading[]
-  relatedPosts:  CollectionEntry<'blog'>[]
+  relatedPosts: CollectionEntry<'blog'>[]
 }
 
 const { frontmatter, headings, relatedPosts } = Astro.props
@@ -41,9 +41,7 @@ const headingsToShow = [
     slot="head"
   />
   <div class="lg:grid lg:grid-cols-4">
-    <article
-      class="prose prose-newspaper max-w-full lg:col-span-3 lg:max-w-prose"
-    >
+    <article class="prose prose-newspaper max-w-prose lg:col-span-3">
       <h1 id="overview-0">
         {frontmatter.title}
       </h1>
@@ -52,7 +50,7 @@ const headingsToShow = [
     </article>
     {
       headings && (
-        <aside class="prose-toc font-prose hidden text-sm lg:col-span-1 lg:block">
+        <aside class="prose-toc hidden text-sm lg:col-span-1 lg:block">
           <div class="border-border-base sticky top-5 border-l-4">
             <TableOfContents
               client:visible
@@ -64,21 +62,23 @@ const headingsToShow = [
       )
     }
   </div>
-  <div class="my-8">
-    <h1 class="text-3xl">Related Posts</h1>
-    {
-      relatedPosts.map((related) => (
-        <RelatedPost
-          class="mt-4 mb-8"
-          frontmatter={related.data}
-          href={`/blog/${related.slug}`}
-        />
-      ))
-    }
-  </div>
-  <div
+  {
+    relatedPosts.length > 0 && (
+      <div class="my-8">
+        <h1 class="text-3xl">Related Posts</h1>
+        {relatedPosts.map((related) => (
+          <RelatedPost
+            class="mt-4 mb-8"
+            frontmatter={related.data}
+            href={`/blog/${related.slug}`}
+          />
+        ))}
+      </div>
+    )
+  }
+  <!-- <div
     class="mt-8 min-h-[300px] border border-black p-8 text-center md:text-3xl"
   >
     Used for comments
-  </div>
+  </div> -->
 </BaseLayout>

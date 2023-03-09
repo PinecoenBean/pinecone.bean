@@ -54,6 +54,9 @@ module.exports = {
             'h1, h2, h3, h4, h5': {
               color: 'rgb(var(--color-text-heading))',
             },
+            'h1': {
+              'font-size': '2em'
+            },
             'code::before': {
               content: 'none',
             },
