@@ -1,0 +1,84 @@
+---
+import RelatedPost from '@components/BlogPost/RelatedPost.astro'
+import TableOfContents from '@components/TableOfContents'
+import { SITE } from '@config'
+import type { MarkdownHeading } from 'astro'
+import type { CollectionEntry } from 'astro:content'
+import BaseLayout from './BaseLayout.astro'
+
+export interface Props {
+  frontmatter: CollectionEntry<'blog'>['data']
+  headings: MarkdownHeading[]
+  relatedPosts: CollectionEntry<'blog'>[]
+}
+
+const { frontmatter, headings, relatedPosts } = Astro.props
+
+const formattedDate = new Date(frontmatter.pubDate).toLocaleDateString(
+  'en-us',
+  {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  }
+)
+const overview = {
+  depth: 2,
+  slug: 'overview-0',
+  text: 'Overview',
+}
+const headingsToShow = [
+  overview,
+  ...headings.filter((h) => h.depth > 1 && h.depth <= SITE.maxTocDepth),
+]
+---
+
+<BaseLayout title={frontmatter.title}>
+  <link
+    rel="stylesheet"
+    href="/katex/katex.min.css"
+    crossorigin="anonymous"
+    slot="head"
+  />
+  <div class="lg:grid lg:grid-cols-4">
+    <article class="prose prose-newspaper max-w-prose lg:col-span-3">
+      <h1 id="overview-0">
+        {frontmatter.title}
+      </h1>
+      <time class="mb-[2em] block text-text-muted">{formattedDate}</time>
+      <slot />
+    </article>
+    {
+      headings && (
+        <aside class="prose-toc hidden text-sm lg:col-span-1 lg:block">
+          <div class="border-border-base sticky top-5 border-l-4">
+            <TableOfContents
+              client:visible
+              headings={headingsToShow}
+              className="pl-2"
+            />
+          </div>
+        </aside>
+      )
+    }
+  </div>
+  {
+    relatedPosts.length > 0 && (
+      <div class="my-8">
+        <h1 class="text-3xl">Related Posts</h1>
+        {relatedPosts.map((related) => (
+          <RelatedPost
+            class="mt-4 mb-8"
+            frontmatter={related.data}
+            href={`/blog/${related.slug}`}
+          />
+        ))}
+      </div>
+    )
+  }
+  <!-- <div
+    class="mt-8 min-h-[300px] border border-black p-8 text-center md:text-3xl"
+  >
+    Used for comments
+  </div> -->
+</BaseLayout>

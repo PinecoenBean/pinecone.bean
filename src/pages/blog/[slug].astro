@@ -1,0 +1,34 @@
+---
+import PostLayout from '@layouts/PostLayout.astro'
+import { CollectionEntry,getCollection,getEntryBySlug } from 'astro:content'
+
+export interface Props {
+  entry: CollectionEntry<'blog'>
+}
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog')
+  return posts.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }))
+}
+
+const { entry } = Astro.props
+const { Content, headings } = await entry.render()
+
+const relatedPosts: CollectionEntry<'blog'>[] = []
+if (entry.data.relatedPosts !== undefined) {
+  for (const p of entry.data.relatedPosts) {
+    const relatedEntry = await getEntryBySlug('blog', p)
+    if (relatedEntry === undefined) {
+      throw new Error(`Invalid related posts ${p}`)
+    }
+    relatedPosts.push(relatedEntry)
+  }
+}
+---
+
+<PostLayout frontmatter={entry.data} headings={headings} relatedPosts={relatedPosts}>
+  <Content />
+</PostLayout>

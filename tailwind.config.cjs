@@ -5,16 +5,16 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Space Grotesk', 'sans-serif'],
-        heading: ['Space Grotesk', 'sans-serif'],
+        body: ['"Source Sans 3"', 'sans-serif'],
+        heading: ['"Source Sans 3"', 'sans-serif'],
+        prose: ['"Source Serif 4"', 'serif'],
+        code: ['JetBrains Mono', 'monospace'],
       },
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
         primary: {
-          blue: 'rgb(var(--color-primary-blue) / <alpha-value>)',
-          green: 'rgb(var(--color-primary-green) / <alpha-value>)',
-          yellow: 'rgb(var(--color-primary-yellow) / <alpha-value>)',
+          main: 'rgb(var(--color-primary-main) / <alpha-value>)',
         },
         text: {
           body: 'rgb(var(--color-text-body) / <alpha-value>)',
@@ -29,16 +29,13 @@ module.exports = {
           body: 'rgb(var(--color-bg-body) / <alpha-value>)',
           code: 'rgb(var(--color-bg-code) / <alpha-value>)',
           selection: 'rgb(var(--color-bg-selection) / <alpha-value>)',
+          card: 'rgb(var(--color-bg-card) / <alpha-value>)',
+          'card-muted': 'rgb(var(--color-bg-card-muted) / <alpha-value>)',
         },
         border: {
           code: 'rgb(var(--color-border-code) / <alpha-value>)',
-          line: 'rgb(var(--color-border-line) / <alpha-value>)'
+          base: 'rgb(var(--color-border-base) / <alpha-value>)',
         },
-        paper: {
-          fill: 'rgb(var(--color-fill) / <alpha-value>)',
-          card: 'rgb(var(--color-card) / <alpha-value>)',
-          'card-muted': 'rgb(var(--color-card-muted) / <alpha-value>)'
-        }
       },
       typography: {
         DEFAULT: {
@@ -56,6 +53,9 @@ module.exports = {
             },
             'h1, h2, h3, h4, h5': {
               color: 'rgb(var(--color-text-heading))',
+            },
+            'h1': {
+              'font-size': '2em'
             },
             'code::before': {
               content: 'none',
@@ -78,7 +78,7 @@ module.exports = {
               'font-family': 'Arial',
               content: "'“'",
               'font-size': '4em',
-              color: 'rgb(var(--color-text-bold))',
+              color: 'rgb(var(--color-text-link))',
               position: 'absolute',
               left: '-10px',
               top: '-10px',
@@ -94,7 +94,7 @@ module.exports = {
             },
           },
         },
-        bubblegum: {
+        newspaper: {
           css: {
             '--tw-prose-body': 'rgb(var(--color-text-body))',
             '--tw-prose-headings': 'rgb(var(--color-text-heading))',
@@ -105,7 +105,7 @@ module.exports = {
             '--tw-prose-bullets': 'rgb(var(--color-text-body))',
             '--tw-prose-hr': 'rgb(var(--color-text-muted))',
             '--tw-prose-quotes': 'rgb(var(--color-text-body))',
-            '--tw-prose-quote-borders': 'rgb(var(--color-text-muted))',
+            '--tw-prose-quote-borders': 'rgb(var(--color-primary-main))',
             '--tw-prose-captions': 'rgb(var(--color-primary-heading))',
             '--tw-prose-quote-captions': 'rgb(var(--color-primary-heading))',
             '--tw-prose-code': 'rgb(var(--color-text-code))',

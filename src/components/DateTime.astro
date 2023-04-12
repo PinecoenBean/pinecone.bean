@@ -1,0 +1,19 @@
+---
+export interface Props {
+  datetime: Date
+  showDay?: boolean
+  class?: string
+}
+
+const { datetime, class: className, showDay = true } = Astro.props
+
+const formattedDate = datetime.toLocaleString('en-us', {
+  year: 'numeric',
+  month: 'long',
+  day: showDay ? 'numeric' : undefined,
+})
+---
+
+<time class={className} datetime={datetime.toDateString()}>
+  {formattedDate}
+</time>

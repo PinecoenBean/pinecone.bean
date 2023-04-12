@@ -13,7 +13,7 @@ const { title } = Astro.props
 ---
 
 <!DOCTYPE html>
-<html class="theme-bubblegum" lang="en">
+<html class="theme-newspaper" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -45,9 +45,10 @@ const { title } = Astro.props
       }
     </script>
   </head>
-  <body class="mx-auto flex min-h-screen max-w-3xl flex-col px-6 sm:px-8">
+
+  <body class="flex min-h-screen flex-col px-6 sm:px-8">
     <Header />
-    <main id="main" class="mt-4 sm:mt-8">
+    <main id="main" class="px-2 pt-8 pb-6 max-w-4xl mx-auto w-full">
       <slot />
     </main>
     <Footer />

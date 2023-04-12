@@ -1,38 +1,44 @@
 ---
-import { siteMetaData } from '@config'
+import { SITE } from '@config'
 import DarkModeToggle from './DarkModeToggle.astro'
 import Nav from './Nav.astro'
 ---
 
-<header>
-  <section class="grid items-center p-4 sm:py-6">
-    <!-- Skip to content -->
-    <a
-      class="unset absolute left-[50%] -top-[100rem] z-10 translate-x-[-50%] bg-white px-8 py-2 text-black focus:top-[initial]"
-      href="#main"
-    >
-      Skip to content
-    </a>
-    <!-- Website title -->
-    <a
-      href="/"
-      class="unset overflow-hidden py-1 text-xl font-semibold text-text-heading sm:static sm:text-2xl md:text-3xl"
-    >
-      <span
-        class="bg-gradient-to-bl from-primary-yellow to-primary-yellow bg-[length:90%_40%] bg-bottom bg-no-repeat dark:from-primary-blue dark:to-primary-blue"
+<header class="pt-4 mx-auto max-w-4xl w-full">
+  <a
+    class="unset absolute left-[50%] -top-[100rem] z-10 translate-x-[-50%] bg-white px-8 py-2 text-black focus:top-[initial]"
+    href="#main"
+  >
+    Skip to content
+  </a>
+  <div class="mb-3 flex justify-between">
+    <h1>
+      <a
+        href="/"
+        class="unset my-3 overflow-hidden py-1 text-xl font-semibold sm:static sm:text-2xl"
       >
-        {siteMetaData.title}
-      </span>
-    </a>
-    <!-- Navigations -->
-    <Nav />
-    <DarkModeToggle />
-  </section>
-  <!-- borderline -->
-  <div>
-    <hr class="border-border-line" />
+        {SITE.title}
+      </a>
+    </h1>
+    <div class="flex items-end justify-center gap-4">
+      <Nav />
+      <a href="/search" class="unset">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          class="h-6 w-6 fill-text-body hover:rotate-12 hover:fill-text-link"
+        >
+          <path
+            d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"
+          ></path>
+        </svg>
+      </a>
+      <DarkModeToggle />
+    </div>
   </div>
+  <!-- borderline -->
 </header>
+<hr class="border-border-base" />
 
 <style>
   section {

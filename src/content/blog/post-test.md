@@ -1,16 +1,10 @@
 ---
-layout: '@layouts/MarkdownPostLayout.astro'
-title: 'Robust Patch-Based HDR Reconstruction of Dynamic Scenes'
-pubDate: 2022-07-01
-description: 'This is the first post of my new Astro blog.'
-author: 'Astro Learner'
-image:
-  url: 'https://astro.build/assets/blog/astro-1-release-update/cover.jpeg'
-  alt: 'The Astro logo with the word One.'
-tags: ['astro', 'blogging', 'learning in public']
+title: 'Input Setting of Deep Learning based HDR'
+pubDate: 2023-02-01
+author: 'Junda Liao'
+tags: ['High Dynamic Range']
+description: 'According to the optical flow computed on different kinds of input images, different exposure alignment strategy may influence the network to find correct correspondence between reference and non-reference images. Besides, deformable convolution can also be regarded as a kind of attention mechanism. Except for aligning features, it may also have the ability of extracting important information for HDR content fusion. So input LDR image features may make the result different.'
 ---
-
-# Robust Patch-Based HDR Reconstruction of Dynamic Scenes
 
 ## Purpose
 
@@ -49,7 +43,8 @@ Generate ghost-free HDR images from bracketed exposures.
 ##### Equation
 
 $$
-E(H) = \sum_{p \in pixels} [\alpha_{ref}(H(p) - h(L_{ref})(p))^2 + (1 - \alpha_{ref})  E_{MBDS}(H|L1, L2, \dots, L_N)]
+E(H) = \sum_{p \in pixels} [\alpha_{ref}(H(p) - h(L_{ref})(p))^2 + \\
+ (1 - \alpha_{ref})  E_{MBDS}(H|L1, L2, \dots, L_N)]
 $$
 
 - $\alpha_{ref}$ : trapezoid function indicating how well a pixel is exposed. $H$ : HDR result. $h$ : the function map LDR image to the linear domain. $L$ : LDR images.

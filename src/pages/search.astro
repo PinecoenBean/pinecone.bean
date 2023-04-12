@@ -1,0 +1,22 @@
+---
+import SearchPanel from '@components/SearchPanel'
+import BaseLayout from '@layouts/BaseLayout.astro'
+import type { SearchItem } from '@types'
+import { getCollection } from 'astro:content'
+
+const posts = await getCollection('blog')
+const searchItems = posts.map(
+  ({ data: { title, description, tags }, id, slug }): SearchItem => ({
+    title,
+    description,
+    tags,
+    id,
+    slug,
+  })
+)
+console.warn('search intialize')
+---
+
+<BaseLayout title="Search articles">
+  <SearchPanel client:visible searchItems={searchItems} />
+</BaseLayout>

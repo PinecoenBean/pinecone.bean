@@ -1,24 +1,15 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
+export const TWITTER_HANDLE = '@yourtwitterhandle'
 
-export const SITE_TITLE = "Captain Awesome";
-export const SITE_DESCRIPTION =
-  "Welcome to my blog! I write about modern web development.";
-export const TWITTER_HANDLE = "@yourtwitterhandle";
-export const MY_NAME = "Captain Awesome";
-
-// setup in astro.config.mjs
-const BASE_URL = new URL(import.meta.env.SITE);
-export const SITE_URL = BASE_URL.origin;
-
-export const siteMetaData = {
+export const SITE = {
   website: 'https://astro-paper.pages.dev/',
   author: 'Junda Liao',
-  title: 'PineconeBean',
+  title: 'pinecone-bean',
+  numRecentPosts: 5,
+  maxTocDepth: 4
 }
 
 export const navLinks = [
   { name: 'Home', href: '/' },
-  { name: 'Blog', href: '/blog' }
+  { name: 'Blog', href: '/blog' },
   // { name: 'Projects', href: '/projects' }
 ]

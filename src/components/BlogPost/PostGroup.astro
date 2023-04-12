@@ -1,0 +1,29 @@
+---
+import BlogPost from '@components/BlogPost.astro'
+import DateTime from '@components/DateTime.astro'
+import type { CollectionEntry } from 'astro:content'
+
+export interface Props {
+  posts: CollectionEntry<'blog'>[]
+}
+const { posts } = Astro.props
+---
+
+<div class="my-3">
+  <!-- <i class="fa-regular fa-calendar-days text-lg px-2"></i> -->
+  <DateTime class="text-xl" datetime={posts[0].data.pubDate} showDay={false} />
+  <hr class="border-text-mute"/>
+</div>
+<ul class="mb-4">
+  {
+    posts.map((post) => (
+      <li>
+        <BlogPost
+          pubDate={post.data.pubDate}
+          title={post.data.title}
+          url={`/blog/${post.slug}`}
+        />
+      </li>
+    ))
+  }
+</ul>
